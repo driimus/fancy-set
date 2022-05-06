@@ -1,15 +1,28 @@
-declare class FancySet<T> extends Set<T> {
-  intersection(other: Set<T>): FancySet<T>;
+declare const FancySet: Constructor<Fancy<Set<T>>>;
+declare const FancyWeakSet: Constructor<Fancy<WeakSet<T>>>;
 
-  difference(other: Set<T>): FancySet<T>;
-
-  symmetricDifference(other: Set<T>): FancySet<T>;
-
-  union(other: Set<T>): FancySet<T>;
-
-  isSubset(other: Set<T>): boolean;
-
-  isSuperset(other: Set<T>): boolean;
-
-  update(...values: T[]): void;
+interface SetOperations<T extends Set | WeakSet, V = EntryType<T>> {
+  intersection(other: T): Fancy<T>;
+  difference(other: T): Fancy<T>;
+  symmetricDifference(other: T): Fancy<T>;
+  union(other: T): Fancy<T>;
+  isSubset(other: T): boolean;
+  isSuperset(other: T): boolean;
+  update(...values: V[]): void;
 }
+
+export type Fancy<T extends Set | WeakSet> = T & SetOperations<T, EntryType<T>>;
+
+declare function fancify<BaseT extends Constructor<Set | WeakSet>>(
+  Base: BaseT
+): Constructor<Fancy<BaseT>>;
+
+type Constructor<T, Arguments extends unknown[] = any[]> = new (
+  ...arguments_: Arguments
+) => T;
+
+type EntryType<T extends Iterable> = T extends Set<infer U>
+  ? U
+  : T extends WeakSet<infer U>
+  ? U
+  : never;
