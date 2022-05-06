@@ -1,0 +1,32 @@
+{
+  "name": "fancy-set",
+  "version": "1.0.0",
+  "description": "Derived Set class with support for set-theoretic operations",
+  "main": "index.js",
+  "type": "module",
+  "files": [
+    "index.js",
+    "index.d.ts"
+  ],
+  "scripts": {
+    "test": "node --test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/driimus/fancy-set.git"
+  },
+  "keywords": [],
+  "author": "Cristian Petre <driimus@vivaldi.net>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/driimus/fancy-set/issues"
+  },
+  "homepage": "https://github.com/driimus/fancy-set#readme",
+  "devDependencies": {
+    "@faker-js/faker": "^6.3.1"
+  },
+  "packageManager": "pnpm@7.0.0",
+  "engines": {
+    "node": ">=18.1.0"
+  }
+}
