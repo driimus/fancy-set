@@ -21,4 +21,18 @@ mySuperFancySet.isSuperset(myFancyset); // true
 
 ## TypeScript support
 
-This module ships its own type definitions.
+This module ships its own type definitions, so TypeScript is supported out of the box.
+
+## Custom sets
+
+The `fancify` mix-in can be used to extend custom set implementations.
+
+```ts
+import { fancify } from "fancy-sets";
+
+class MyCustomSet extends Set {
+  // ...custom implementation goes here
+}
+
+const MyFancyCustomSet = fancify(MyCustomSet);
+```
