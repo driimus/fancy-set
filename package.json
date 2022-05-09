@@ -1,7 +1,7 @@
 {
   "name": "fancy-set",
   "version": "0.1.0",
-  "description": "Derived Set class with support for set-theoretic operations",
+  "description": "Constrained mixin that applies set-theoretic operations to set classes",
   "main": "index.js",
   "type": "module",
   "files": [
@@ -17,7 +17,11 @@
     "type": "git",
     "url": "git+https://github.com/driimus/fancy-set.git"
   },
-  "keywords": [],
+  "keywords": [
+    "set",
+    "set theory",
+    "set operations"
+  ],
   "author": "Cristian Petre <driimus@vivaldi.net>",
   "license": "ISC",
   "bugs": {

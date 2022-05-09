@@ -3,16 +3,13 @@ import assert from "node:assert";
 import test from "node:test";
 import { FancySet } from "./index.js";
 
-test("union", async (t) => {
-  /**
-   * @returns {number[]}
-   */
-  const range = (start, stop, step = 1) =>
-    Array.from(
-      { length: (stop - start) / step + 1 },
-      (_, i) => start + i * step
-    );
+/**
+ * @returns {number[]}
+ */
+const range = (start, stop, step = 1) =>
+  Array.from({ length: (stop - start) / step + 1 }, (_, i) => start + i * step);
 
+test("union", async (t) => {
   await t.test("returns a fancy set with values found in either set", () => {
     const setA = new FancySet(range(0, 10));
     const setB = new Set(range(5, 15));
@@ -50,7 +47,7 @@ test("intersection", async (t) => {
 
 test("isSubset", async (t) => {
   await t.test("returns true if the other set has all the elements", () => {
-    const elements = Array.from({ length: 10 }, () => faker.lorem.word());
+    const elements = Array.from({ length: 10 }, () => faker.datatype.number());
 
     const subset = new FancySet(elements.slice(0, 5));
 
@@ -58,7 +55,7 @@ test("isSubset", async (t) => {
   });
 
   await t.test("returns true if the sets are equivalent", () => {
-    const elements = Array.from({ length: 10 }, () => faker.lorem.word());
+    const elements = Array.from({ length: 10 }, () => faker.datatype.number());
 
     assert.ok(new FancySet(elements).isSubset(new Set(elements)));
   });
@@ -66,10 +63,12 @@ test("isSubset", async (t) => {
   await t.test(
     "returns false if some values aren't included in the compared set",
     () => {
-      const elements = Array.from({ length: 10 }, () => faker.lorem.word());
+      const elements = Array.from({ length: 10 }, (_, i) =>
+        faker.lorem.word(i)
+      );
 
       const set = new FancySet(elements.slice(0, 5));
-      set.add(faker.lorem.word());
+      set.add(faker.datatype.number());
 
       assert.equal(set.isSubset(new Set(elements)), false);
     }
@@ -78,7 +77,7 @@ test("isSubset", async (t) => {
 
 test("isSuperset", async (t) => {
   await t.test("returns true if the other set has all the elements", () => {
-    const elements = Array.from({ length: 10 }, () => faker.lorem.word());
+    const elements = Array.from({ length: 10 }, () => faker.datatype.number());
 
     const subset = new Set(elements);
 
@@ -86,7 +85,7 @@ test("isSuperset", async (t) => {
   });
 
   await t.test("returns true if the sets are equivalent", () => {
-    const elements = Array.from({ length: 10 }, () => faker.lorem.word());
+    const elements = Array.from({ length: 10 }, () => faker.datatype.number());
 
     assert.ok(new FancySet(elements).isSuperset(new Set(elements)));
   });
@@ -94,10 +93,12 @@ test("isSuperset", async (t) => {
   await t.test(
     "returns false if some values are exclusive to the compared set",
     () => {
-      const elements = Array.from({ length: 10 }, () => faker.lorem.word());
+      const elements = Array.from({ length: 10 }, () =>
+        faker.datatype.number()
+      );
 
       const set = new Set(elements);
-      set.add(faker.lorem.word());
+      set.add(faker.datatype.number());
 
       assert.equal(new FancySet(elements).isSuperset(set), false);
     }
@@ -105,10 +106,27 @@ test("isSuperset", async (t) => {
 });
 
 test("update should allow inserting multiple values at once", () => {
-  const elements = Array.from({ length: 10 }, () => faker.lorem.word());
-  const set = new FancySet([faker.lorem.word()]);
+  const elements = range(1, 10);
+  const set = new FancySet([0]);
 
   set.update(...elements);
 
   assert.equal(set.size, elements.length + 1);
+});
+
+test("difference", async (t) => {
+  await t.test(
+    "returns a set containing elements which are not in the other",
+    () => {
+      const commonValues = [1, 2, 3];
+      const exclusiveValues = range(5, 10);
+
+      const setA = new FancySet([...commonValues, ...exclusiveValues]);
+
+      assert.deepStrictEqual(
+        setA.difference(new Set(commonValues)),
+        new FancySet(exclusiveValues)
+      );
+    }
+  );
 });

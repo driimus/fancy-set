@@ -1,23 +1,23 @@
 export const fancify = (Base) => {
   class Fancy extends Base {
-    union(other) {
-      return new Fancy([...this, ...other]);
+    union(...others) {
+      return new Fancy([...this, ...others.flatMap((set) => [...set])]);
     }
 
-    intersection(other) {
+    intersection(...others) {
       const intersection = new Fancy();
 
       for (const value of this.values())
-        if (other.has(value)) intersection.add(value);
+        if (others.every((set) => set.has(value))) intersection.add(value);
 
       return intersection;
     }
 
-    difference(other) {
+    difference(...others) {
       const difference = new Fancy();
 
       for (const value of this.values())
-        if (!other.has(value)) difference.add(value);
+        if (!others.some((set) => set.has(value))) difference.add(value);
 
       return difference;
     }
