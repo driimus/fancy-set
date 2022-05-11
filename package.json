@@ -23,7 +23,7 @@
     "set operations"
   ],
   "author": "Cristian Petre <driimus@vivaldi.net>",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/driimus/fancy-set/issues"
   },

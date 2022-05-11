@@ -104,6 +104,23 @@ test("symmetricDifference", async (t) => {
 });
 
 test("isSubset", async (t) => {
+  await t.test("returns true if the sets are equivalent", () => {
+    assert.ok(new FancySet([]).equals(new Set([])));
+    assert.ok(new FancySet(range(1, 10)).equals(new Set(range(1, 10))));
+  });
+
+  await t.test(
+    "returns false if some values are exclusive to one of the sets",
+    () => {
+      const setA = new FancySet(range(1, 10));
+      const setB = setA.clone().add(11);
+
+      assert.equal(setA.equals(setB), false);
+    }
+  );
+});
+
+test("isSubset", async (t) => {
   await t.test("returns true if the other set has all the elements", () => {
     const elements = Array.from({ length: 10 }, () => faker.datatype.number());
 
