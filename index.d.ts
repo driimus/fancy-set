@@ -6,6 +6,7 @@ interface SetOperations<T extends Set | WeakSet, V = EntryType<T>> {
   intersection(...others: T[]): Fancy<T>;
   difference(...others: T[]): Fancy<T>;
   symmetricDifference(other: T): Fancy<T>;
+  equals(other: T): boolean;
   isSubset(other: T): boolean;
   isSuperset(other: T): boolean;
   isDisjoint(other: T): boolean;

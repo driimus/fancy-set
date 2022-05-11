@@ -26,6 +26,10 @@ export const fancify = (Base) => {
       return new Fancy(other).difference(this).union(this.difference(other));
     }
 
+    equals(other) {
+      return this.size === other.size && this.isSubset(other);
+    }
+
     isSubset(other) {
       return Array.from(this).every((value) => other.has(value));
     }
