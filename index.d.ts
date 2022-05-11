@@ -2,13 +2,15 @@ declare const FancySet: Constructor<Fancy<Set<T>>>;
 declare const FancyWeakSet: Constructor<Fancy<WeakSet<T>>>;
 
 interface SetOperations<T extends Set | WeakSet, V = EntryType<T>> {
+  union(...others: T[]): Fancy<T>;
   intersection(...others: T[]): Fancy<T>;
   difference(...others: T[]): Fancy<T>;
   symmetricDifference(other: T): Fancy<T>;
-  union(...others: T[]): Fancy<T>;
   isSubset(other: T): boolean;
   isSuperset(other: T): boolean;
+  isDisjoint(other: T): boolean;
   update(...values: V[]): void;
+  clone(): Fancy<T>;
 }
 
 export type Fancy<T extends Set | WeakSet> = T & SetOperations<T, EntryType<T>>;

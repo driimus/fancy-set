@@ -45,6 +45,64 @@ test("intersection", async (t) => {
   );
 });
 
+test("difference", async (t) => {
+  await t.test(
+    "returns a set containing elements which are not in the other",
+    () => {
+      const commonValues = [1, 2, 3];
+      const exclusiveValues = range(5, 10);
+
+      const setA = new FancySet([...commonValues, ...exclusiveValues]);
+
+      assert.deepStrictEqual(
+        setA.difference(new Set(commonValues)),
+        new FancySet(exclusiveValues)
+      );
+    }
+  );
+});
+
+test("symmetricDifference", async (t) => {
+  await t.test(
+    "return a fancy set with elements in either the set or other but not both",
+    () => {
+      const commonWords = faker.helpers.uniqueArray(
+        () => faker.unique(faker.lorem.word),
+        5
+      );
+      const wordsExclusiveToA = faker.helpers.uniqueArray(
+        () => faker.unique(faker.lorem.word),
+        5
+      );
+      const wordsExclusiveToB = faker.helpers.uniqueArray(
+        () => faker.unique(faker.lorem.word),
+        5
+      );
+      const setA = new FancySet([...wordsExclusiveToA, ...commonWords]);
+      const setB = new Set([...wordsExclusiveToB, ...commonWords]);
+
+      assert.deepStrictEqual(
+        setA.symmetricDifference(setB),
+        new FancySet([...wordsExclusiveToA, ...wordsExclusiveToB])
+      );
+    }
+  );
+
+  await t.test("should be commutative", () => {
+    const setA = new FancySet(
+      faker.helpers.uniqueArray(faker.datatype.bigInt, 10)
+    );
+    const setB = new FancySet(
+      faker.helpers.uniqueArray(faker.datatype.bigInt, 10)
+    );
+
+    assert.deepStrictEqual(
+      setA.symmetricDifference(setB),
+      setB.symmetricDifference(setA)
+    );
+  });
+});
+
 test("isSubset", async (t) => {
   await t.test("returns true if the other set has all the elements", () => {
     const elements = Array.from({ length: 10 }, () => faker.datatype.number());
@@ -105,6 +163,28 @@ test("isSuperset", async (t) => {
   );
 });
 
+test("isDisjoint", async (t) => {
+  await t.test("returns true if the sets have no elements in common", () => {
+    const setA = new FancySet(range(1, 10));
+    const setB = new FancySet(range(11, 20));
+
+    assert.ok(setA.isDisjoint(setB));
+  });
+
+  await t.test("returns true if both sets are empty", () => {
+    assert.ok(new FancySet([]).isDisjoint(new Set([])));
+  });
+
+  await t.test("returns false if some entries are present in both sets", () => {
+    const elements = range(1, 10);
+
+    assert.equal(
+      new FancySet(elements).isDisjoint(new Set(range(10, 15))),
+      false
+    );
+  });
+});
+
 test("update should allow inserting multiple values at once", () => {
   const elements = range(1, 10);
   const set = new FancySet([0]);
@@ -114,19 +194,14 @@ test("update should allow inserting multiple values at once", () => {
   assert.equal(set.size, elements.length + 1);
 });
 
-test("difference", async (t) => {
-  await t.test(
-    "returns a set containing elements which are not in the other",
-    () => {
-      const commonValues = [1, 2, 3];
-      const exclusiveValues = range(5, 10);
-
-      const setA = new FancySet([...commonValues, ...exclusiveValues]);
-
-      assert.deepStrictEqual(
-        setA.difference(new Set(commonValues)),
-        new FancySet(exclusiveValues)
-      );
-    }
+test("clone should return a copy of the set", () => {
+  const originalSet = new FancySet(
+    faker.helpers.uniqueArray(faker.lorem.slug, 5)
   );
+  const clone = originalSet.clone();
+
+  clone.add("only found in clone");
+
+  assert.equal(clone.has("only found in clone"), true);
+  assert.equal(originalSet.has("only found in clone"), false);
 });
