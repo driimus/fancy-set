@@ -29,8 +29,10 @@
   },
   "homepage": "https://github.com/driimus/fancy-set#readme",
   "devDependencies": {
+    "@actions/core": "^1.8.0",
     "@changesets/cli": "^2.22.0",
-    "@faker-js/faker": "^6.3.1"
+    "@faker-js/faker": "^6.3.1",
+    "tap-parser": "^11.0.1"
   },
   "packageManager": "pnpm@7.1.0",
   "engines": {

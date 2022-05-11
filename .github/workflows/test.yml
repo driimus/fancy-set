@@ -26,4 +26,13 @@ jobs:
         run: pnpm install
 
       - name: Test
-        run: pnpm test
+        id: run-tests
+        run: set -o pipefail && pnpm test | tee ./previous-test-output.tap
+
+      - name: Create summary
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const { createTestSummary } = await import("${{ github.workspace }}/.github/workflows/summary.js")
+
+            await createTestSummary()
