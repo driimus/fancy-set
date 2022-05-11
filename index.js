@@ -23,7 +23,7 @@ export const fancify = (Base) => {
     }
 
     symmetricDifference(other) {
-      return new Fancy(other).difference(this).update(this.difference(other));
+      return new Fancy(other).difference(this).union(this.difference(other));
     }
 
     isSubset(other) {
@@ -34,8 +34,16 @@ export const fancify = (Base) => {
       return Array.from(other).every((value) => this.has(value));
     }
 
+    isDisjoint(other) {
+      return Array.from(this).every((value) => other.has(value) === false);
+    }
+
     update(...values) {
       for (const value of values) this.add(value);
+    }
+
+    clone() {
+      return new Fancy(this);
     }
   }
 
