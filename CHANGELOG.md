@@ -1,5 +1,11 @@
 # fancy-set
 
+## 0.1.3
+
+### Patch Changes
+
+- 638371d: fix incorrect return type for `fancify`
+
 ## 0.1.2
 
 ### Patch Changes
