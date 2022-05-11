@@ -1,5 +1,5 @@
-declare const FancySet: Constructor<Fancy<Set<T>>>;
-declare const FancyWeakSet: Constructor<Fancy<WeakSet<T>>>;
+declare class FancySet<T> extends fancify(Set)<T> {}
+declare class FancyWeakSet<T extends object> extends fancify(WeakSet)<T> {}
 
 interface SetOperations<T extends Set | WeakSet, V = EntryType<T>> {
   union(...others: T[]): Fancy<T>;
@@ -14,15 +14,26 @@ interface SetOperations<T extends Set | WeakSet, V = EntryType<T>> {
   clone(): Fancy<T>;
 }
 
-export type Fancy<T extends Set | WeakSet> = T & SetOperations<T, EntryType<T>>;
+export type Fancy<
+  T extends SetConstructor | WeakSetConstructor,
+  V,
+  I = InstanceType<T>
+> = I & SetOperations<I, V>;
 
-declare function fancify<BaseT extends Constructor<Set | WeakSet>>(
+declare function fancify<BaseT extends SetConstructor>(
   Base: BaseT
-): Constructor<Fancy<BaseT>>;
+): {
+  new <V = any>(values?: readonly V[] | null): Fancy<BaseT, V>;
+};
 
-type Constructor<T, Arguments extends unknown[] = any[]> = new (
-  ...arguments_: Arguments
-) => T;
+declare function fancify<BaseT extends WeakSetConstructor>(
+  Base: BaseT
+): {
+  new <V extends object = object>(values?: readonly V[] | null): Fancy<
+    BaseT,
+    V
+  >;
+};
 
 type EntryType<T extends Iterable> = T extends Set<infer U>
   ? U
