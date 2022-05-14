@@ -10,7 +10,7 @@ pnpm add fancy-set
 
 # Usage
 
-Fancified versions of the native set classes (`Set` and `WeakSet`) can be directly imported:
+Fancified versions of the native set class can be directly imported:
 
 ```ts
 import { FancySet } from "fancy-set";
