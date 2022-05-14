@@ -55,4 +55,3 @@ export const fancify = (Base) => {
 };
 
 export const FancySet = fancify(Set);
-export const FancyWeakSet = fancify(WeakSet);
