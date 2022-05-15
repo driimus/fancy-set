@@ -211,6 +211,45 @@ test("update should allow inserting multiple values at once", () => {
   assert.equal(set.size, elements.length + 1);
 });
 
+test("intersectionUpdate should only keep elements found in all sets", () => {
+  const commonValues = [0];
+  const set = new FancySet([...commonValues, range(-1, -3)]);
+
+  set.intersectionUpdate(
+    new Set([...commonValues, range(1, 3)]),
+    new Set([...commonValues, range(4, 6)])
+  );
+
+  assert.deepStrictEqual(set, new FancySet(commonValues));
+});
+
+test("differenceUpdate should remove all elements found in other sets", () => {
+  const entries = faker.helpers.uniqueArray(
+    () => faker.unique(faker.lorem.word),
+    10
+  );
+  const set = new FancySet(entries);
+
+  set.differenceUpdate(new Set(entries.slice(2, 6)), new Set(entries.slice(6)));
+
+  assert.deepStrictEqual(set, new FancySet(entries.slice(0, 2)));
+});
+
+test("symmetricDifferenceUpdate should keep only elements found in either set, but not in both", () => {
+  const entries = faker.helpers.uniqueArray(
+    () => faker.unique(faker.lorem.word),
+    10
+  );
+  const set = new FancySet(entries.slice(0, 6));
+
+  set.symmetricDifferenceUpdate(new Set(entries.slice(5)));
+
+  assert.deepStrictEqual(
+    set,
+    new FancySet([...entries.slice(0, 5), ...entries.slice(6)])
+  );
+});
+
 test("clone should return a copy of the set", () => {
   const originalSet = new FancySet(
     faker.helpers.uniqueArray(faker.lorem.slug, 5)
