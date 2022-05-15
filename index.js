@@ -49,6 +49,28 @@ export const fancify = (Base) => {
     clone() {
       return new Fancy(this);
     }
+
+    intersectionUpdate(...others) {
+      const intersection = this.intersection(...others);
+
+      for (const value of this) {
+        if (!intersection.has(value)) this.delete(value);
+      }
+    }
+
+    differenceUpdate(...others) {
+      const difference = this.difference(...others);
+
+      for (const value of this) {
+        if (!difference.has(value)) this.delete(value);
+      }
+    }
+
+    symmetricDifferenceUpdate(other) {
+      const symmetricDifference = this.symmetricDifference(other);
+      this.clear();
+      this.update(...symmetricDifference);
+    }
   }
 
   return Fancy;
