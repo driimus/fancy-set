@@ -1,5 +1,11 @@
 # fancy-set
 
+## 0.1.5
+
+### Patch Changes
+
+- 92505c3: add documentation for each method
+
 ## 0.1.4
 
 ### Patch Changes
