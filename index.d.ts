@@ -10,6 +10,9 @@ interface SetOperations<T> {
   isSuperset(other: Set<T>): boolean;
   isDisjoint(other: Set<T>): boolean;
   update(...values: T[]): void;
+  intersectionUpdate(...others: Set<T>[]): void;
+  differenceUpdate(...others: Set<T>[]): void;
+  symmetricDifferenceUpdate(other: Set<T>): void;
   clone(): Fancy<T>;
 }
 
