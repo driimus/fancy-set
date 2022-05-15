@@ -1,5 +1,12 @@
 # fancy-set
 
+## 0.1.4
+
+### Patch Changes
+
+- fc9beb1: inplace update using operation outputs
+- 7dac7b3: disallow 'WeakSet' usage
+
 ## 0.1.3
 
 ### Patch Changes
