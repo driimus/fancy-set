@@ -31,7 +31,7 @@
   "devDependencies": {
     "@actions/core": "^1.8.0",
     "@changesets/cli": "^2.22.0",
-    "@faker-js/faker": "7.4.0",
+    "@faker-js/faker": "7.5.0",
     "tap-parser": "^11.0.1",
     "tsd": "0.23.0"
   },
