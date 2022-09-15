@@ -5,14 +5,14 @@ specifiers:
   '@changesets/cli': ^2.22.0
   '@faker-js/faker': 7.5.0
   tap-parser: ^11.0.1
-  tsd: 0.24.0
+  tsd: 0.24.1
 
 devDependencies:
   '@actions/core': 1.8.0
   '@changesets/cli': 2.22.0
   '@faker-js/faker': 7.5.0
   tap-parser: 11.0.1
-  tsd: 0.24.0
+  tsd: 0.24.1
 
 packages:
 
@@ -1400,8 +1400,8 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /tsd/0.24.0:
-    resolution: {integrity: sha512-ae0qE9E0qGTjYP1fGz4TMWKlqK+bpw/MHqPZFAdsrCOmS1er1jDWsBgiKzOF7MqE4I601Gp2c9aKBoYPrM5Uxw==}
+  /tsd/0.24.1:
+    resolution: {integrity: sha512-sD+s81/2aM4RRhimCDttd4xpBNbUFWnoMSHk/o8kC8Ek23jljeRNWjsxFJmOmYLuLTN9swRt1b6iXfUXTcTiIA==}
     engines: {node: '>=14.16'}
     hasBin: true
     dependencies:
