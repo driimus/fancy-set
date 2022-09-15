@@ -33,7 +33,7 @@
     "@changesets/cli": "^2.22.0",
     "@faker-js/faker": "7.5.0",
     "tap-parser": "^11.0.1",
-    "tsd": "0.24.0"
+    "tsd": "0.24.1"
   },
   "packageManager": "pnpm@7.11.0",
   "engines": {
