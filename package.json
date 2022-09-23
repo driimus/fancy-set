@@ -35,7 +35,7 @@
     "tap-parser": "^11.0.1",
     "tsd": "0.24.1"
   },
-  "packageManager": "pnpm@7.12.1",
+  "packageManager": "pnpm@7.12.2",
   "engines": {
     "node": ">=18.1.0"
   }
