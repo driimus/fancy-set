@@ -4,14 +4,14 @@ specifiers:
   '@actions/core': ^1.8.0
   '@changesets/cli': ^2.22.0
   '@faker-js/faker': 7.5.0
-  tap-parser: ^11.0.1
+  tap-parser: ^12.0.0
   tsd: 0.24.1
 
 devDependencies:
   '@actions/core': 1.8.0
   '@changesets/cli': 2.22.0
   '@faker-js/faker': 7.5.0
-  tap-parser: 11.0.1
+  tap-parser: 12.0.0
   tsd: 0.24.1
 
 packages:
@@ -580,8 +580,9 @@ packages:
     hasBin: true
     dev: true
 
-  /events-to-array/1.1.2:
-    resolution: {integrity: sha1-LUH1Y+H+QA7Uli/hpNXGp1Od9/Y=}
+  /events-to-array/2.0.3:
+    resolution: {integrity: sha512-f/qE2gImHRa4Cp2y1stEOSgw8wTFyUdVJX7G//bMwbaV9JqISFxg99NbmVQeP7YLnDUZ2un851jlaDrlpmGehQ==}
+    engines: {node: '>=12'}
     dev: true
 
   /extendable-error/0.1.7:
@@ -975,13 +976,6 @@ packages:
       kind-of: 6.0.3
     dev: true
 
-  /minipass/3.1.6:
-    resolution: {integrity: sha512-rty5kpw9/z8SX9dmxblFA6edItUmwJgMeYDZRrwlIVN27i8gysGbznJwUggw2V/FVqFSDdWy040ZPS811DYAqQ==}
-    engines: {node: '>=8'}
-    dependencies:
-      yallist: 4.0.0
-    dev: true
-
   /mixme/0.5.4:
     resolution: {integrity: sha512-3KYa4m4Vlqx98GPdOHghxSdNtTvcP8E0kkaJ5Dlh+h2DRzF7zpuVVcA8B0QpKd11YJeP9QQ7ASkKzOeu195Wzw==}
     engines: {node: '>= 8.0.0'}
@@ -1360,18 +1354,17 @@ packages:
     engines: {node: '>= 0.4'}
     dev: true
 
-  /tap-parser/11.0.1:
-    resolution: {integrity: sha512-5ow0oyFOnXVSALYdidMX94u0GEjIlgc/BPFYLx0yRh9hb8+cFGNJqJzDJlUqbLOwx8+NBrIbxCWkIQi7555c0w==}
-    engines: {node: '>= 8'}
+  /tap-parser/12.0.0:
+    resolution: {integrity: sha512-Z4B159YnvGjBv4sIdBvrZqzzxLQQ0ZP++w0a1/rj5fvnqlzgpbGADYdI8HvfdUEvpLI2xsNbVpRyKg03H9UT/g==}
+    engines: {node: '>= 12'}
     hasBin: true
     dependencies:
-      events-to-array: 1.1.2
-      minipass: 3.1.6
-      tap-yaml: 1.0.0
+      events-to-array: 2.0.3
+      tap-yaml: 1.0.2
     dev: true
 
-  /tap-yaml/1.0.0:
-    resolution: {integrity: sha512-Rxbx4EnrWkYk0/ztcm5u3/VznbyFJpyXO12dDBHKWiDVxy7O2Qw6MRrwO5H6Ww0U5YhRY/4C/VzWmFPhBQc4qQ==}
+  /tap-yaml/1.0.2:
+    resolution: {integrity: sha512-GegASpuqBnRNdT1U+yuUPZ8rEU64pL35WPBpCISWwff4dErS2/438barz7WFJl4Nzh3Y05tfPidZnH+GaV1wMg==}
     dependencies:
       yaml: 1.10.2
     dev: true
