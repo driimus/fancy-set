@@ -3,14 +3,14 @@ lockfileVersion: 5.4
 specifiers:
   '@actions/core': ^1.8.0
   '@changesets/cli': ^2.22.0
-  '@faker-js/faker': 7.5.0
+  '@faker-js/faker': 7.6.0
   tap-parser: ^12.0.0
   tsd: 0.24.1
 
 devDependencies:
   '@actions/core': 1.8.0
   '@changesets/cli': 2.22.0
-  '@faker-js/faker': 7.5.0
+  '@faker-js/faker': 7.6.0
   tap-parser: 12.0.0
   tsd: 0.24.1
 
@@ -238,8 +238,8 @@ packages:
       prettier: 1.19.1
     dev: true
 
-  /@faker-js/faker/7.5.0:
-    resolution: {integrity: sha512-8wNUCCUHvfvI0gQpDUho/3gPzABffnCn5um65F8dzQ86zz6dlt4+nmAA7PQUc8L+eH+9RgR/qzy5N/8kN0Ozdw==}
+  /@faker-js/faker/7.6.0:
+    resolution: {integrity: sha512-XK6BTq1NDMo9Xqw/YkYyGjSsg44fbNwYRx7QK2CuoQgyy+f1rrTDHoExVM5PsyXCtfl2vs2vVJ0MN0yN6LppRw==}
     engines: {node: '>=14.0.0', npm: '>=6.0.0'}
     dev: true
 
