@@ -5,14 +5,14 @@ specifiers:
   '@changesets/cli': ^2.22.0
   '@faker-js/faker': 7.6.0
   tap-parser: ^12.0.0
-  tsd: 0.25.0
+  tsd: 0.26.1
 
 devDependencies:
   '@actions/core': 1.8.0
   '@changesets/cli': 2.22.0
   '@faker-js/faker': 7.6.0
   tap-parser: 12.0.0
-  tsd: 0.25.0
+  tsd: 0.26.1
 
 packages:
 
@@ -284,8 +284,8 @@ packages:
       fastq: 1.13.0
     dev: true
 
-  /@tsd/typescript/4.9.4:
-    resolution: {integrity: sha512-70j1vy95LsMvciXWJLrQ9pQaaG1inJJ+gZ/dW/bPdzHUH1VTeSl3BBU6QxqFWh5IjPy6s7xHcUw45R71dw4J3w==}
+  /@tsd/typescript/4.9.5:
+    resolution: {integrity: sha512-+UgxOvJUl5rQdPFSSOOwhmSmpThm8DJ3HwHxAOq5XYe7CcmG1LcM2QeqWwILzUIT5tbeMqY8qABiCsRtIjk/2g==}
     dev: true
 
   /@types/eslint/7.29.0:
@@ -1393,12 +1393,12 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /tsd/0.25.0:
-    resolution: {integrity: sha512-liUlvKtsdr+70XEZP/kkF6U8+Q9URZi4Pw58ih7a9x3kjJblG8rdVgvG62xcvkgRva1q3yWX5qAxfYZuYiC5CA==}
+  /tsd/0.26.1:
+    resolution: {integrity: sha512-HbYaRQqL7imva6ZbSE/7KSIPN/dhwyoLIwPfbjyE7nwWqjkLUTwvyvyhhOUuMLOKWMo4mIx66KyqlTpEqNngdA==}
     engines: {node: '>=14.16'}
     hasBin: true
     dependencies:
-      '@tsd/typescript': 4.9.4
+      '@tsd/typescript': 4.9.5
       eslint-formatter-pretty: 4.1.0
       globby: 11.1.0
       meow: 9.0.0
