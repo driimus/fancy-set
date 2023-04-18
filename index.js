@@ -1,11 +1,11 @@
 export const fancify = (Base) => {
   class Fancy extends Base {
     union(...others) {
-      return new Fancy([...this, ...others.flatMap((set) => [...set])]);
+      return new this.constructor([...this, ...others.flatMap((set) => [...set])]);
     }
 
     intersection(...others) {
-      const intersection = new Fancy();
+      const intersection = new this.constructor();
 
       for (const value of this.values())
         if (others.every((set) => set.has(value))) intersection.add(value);
@@ -14,7 +14,7 @@ export const fancify = (Base) => {
     }
 
     difference(...others) {
-      const difference = new Fancy();
+      const difference = new this.constructor();
 
       for (const value of this.values())
         if (!others.some((set) => set.has(value))) difference.add(value);
@@ -23,7 +23,7 @@ export const fancify = (Base) => {
     }
 
     symmetricDifference(other) {
-      return new Fancy(other).difference(this).union(this.difference(other));
+      return new this.constructor(other).difference(this).union(this.difference(other));
     }
 
     equals(other) {
@@ -47,7 +47,7 @@ export const fancify = (Base) => {
     }
 
     clone() {
-      return new Fancy(this);
+      return new this.constructor(this);
     }
 
     intersectionUpdate(...others) {
