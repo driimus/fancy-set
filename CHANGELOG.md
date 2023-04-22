@@ -1,5 +1,11 @@
 # fancy-set
 
+## 0.1.6
+
+### Patch Changes
+
+- 38d24fd: fix: instantiate current prototype
+
 ## 0.1.5
 
 ### Patch Changes
