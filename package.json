@@ -1,6 +1,6 @@
 {
   "name": "fancy-set",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Constrained mixin that applies set-theoretic operations to set classes",
   "main": "index.js",
   "type": "module",
