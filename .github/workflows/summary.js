@@ -1,6 +1,6 @@
 import core from "@actions/core";
-import Parser from "tap-parser";
 import fs from "node:fs";
+import { Parser } from "tap-parser";
 
 const OPEN_BRACE_EOL = /\{\s*$/;
 
