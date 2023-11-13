@@ -32,7 +32,7 @@ jobs:
         run: set -o pipefail && pnpm test | tee ./previous-test-output.tap
 
       - name: Create summary
-        uses: actions/github-script@v6
+        uses: actions/github-script@v7
         with:
           script: |
             const { createTestSummary } = await import("${{ github.workspace }}/.github/workflows/summary.js")
